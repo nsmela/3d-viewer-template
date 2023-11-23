@@ -38,5 +38,6 @@ class RadiotherapyApp(QApplication):
 
         # process args like autoloading a file or project
 
+        self.window.showWithCanvas()  # shows and then resizes the window to properly display canvas
         return True
 
