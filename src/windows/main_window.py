@@ -2,25 +2,28 @@
 import os
 
 from classes import info
+from classes.mesh.imports import read_3d_file
 from classes.app import get_app
 from windows.ui import main_window_ui
 
-from PySide6.QtCore import Signal, QFile, QIODevice
-from PySide6.QtWidgets import QMainWindow
-from PySide6.QtUiTools import QUiLoader
+from PySide6.QtWidgets import QMainWindow, QFileDialog
+
 
 class MainWindow(QMainWindow):
 
-    # signals
-    importFileSignal = Signal(str)  
-    clearLoadedModelSignal = Signal()  # when the viewport's contents are cleared
-    displayUpdatedSignal = Signal()  # when the 3d viewport is updated
-    exportFileSignal = Signal(str)  # need to export the mesh
-    viewChangedSignal = Signal(int)  # set the page for the viewwidget
+    def actionImportMesh(self):
+        filename = QFileDialog.getOpenFileName(self, "Open model", "", "Model files (*.step *.stp *.stl);; All files (*.*))", "")[0]
+        if not filename:  # no file selected?
+            return
+        
+        shape = read_3d_file(filename=filename)
+        self.app.signals
+
 
     def __init__(self, *args):
         super().__init__(*args)
 
+        app = get_app()
         self.initialized = False
 
         # TODO load user settings
@@ -33,13 +36,13 @@ class MainWindow(QMainWindow):
         # TODO set theme
         # TODO set window variables (name, title, position in monitor) 
 
-        # TODO connect signals
+        # TODO connect signals to events
         # view signals send the new page's index
-        self.ui.btn_import_view.pressed.connect(lambda: self.viewChangedSignal.emit(0))
-        self.ui.btn_dicom_view.pressed.connect(lambda: self.viewChangedSignal.emit(1))
-        self.ui.btn_export_view.pressed.connect(lambda: self.viewChangedSignal.emit(2))
+        self.ui.btn_import_view.pressed.connect(lambda: app.signals.viewChanged.emit(0))
+        self.ui.btn_dicom_view.pressed.connect(lambda: app.signals.viewChanged.emit(1))
+        self.ui.btn_export_view.pressed.connect(lambda: app.signals.viewChanged.emit(2))
 
-        self.viewChangedSignal.connect(self.ui.viewswidget.setCurrentIndex)
+        app.signals.viewChanged.connect(self.ui.viewswidget.setCurrentIndex)
 
         # TODO initialize models
 

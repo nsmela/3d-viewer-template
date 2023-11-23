@@ -1,6 +1,8 @@
 
 from PySide6.QtWidgets import QApplication
 
+from classes.signals import AppSignals
+
 def get_app():
     """ Returns the current QApplication instance """
     return QApplication.instance()
@@ -11,11 +13,11 @@ class RadiotherapyApp(QApplication):
         super().__init__(*args, **kwargs)
         self.args = super().arguments()
         self.errors = []
+        self.signals = AppSignals()
 
         try:
             from classes import info
             # TODO initialize logger
-
 
         except ImportError:
             # TODO log
