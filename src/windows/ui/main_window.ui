@@ -170,7 +170,7 @@
           <item>
            <widget class="QStackedWidget" name="viewswidget">
             <property name="currentIndex">
-             <number>2</number>
+             <number>0</number>
             </property>
             <widget class="QWidget" name="page_1">
              <widget class="QLabel" name="label">
@@ -184,6 +184,19 @@
               </property>
               <property name="text">
                <string>mesh</string>
+              </property>
+             </widget>
+             <widget class="QPushButton" name="btn_import_mesh">
+              <property name="geometry">
+               <rect>
+                <x>60</x>
+                <y>90</y>
+                <width>75</width>
+                <height>23</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>import mesh</string>
               </property>
              </widget>
             </widget>
@@ -256,9 +269,6 @@
           <property name="bottomMargin">
            <number>0</number>
           </property>
-          <item row="0" column="0">
-           <widget class="QGraphicsView" name="graphicsView"/>
-          </item>
          </layout>
         </widget>
        </item>

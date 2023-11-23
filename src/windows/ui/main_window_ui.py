@@ -15,9 +15,9 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QGraphicsView, QGridLayout, QHBoxLayout,
-    QLabel, QMainWindow, QPushButton, QSizePolicy,
-    QSpacerItem, QStackedWidget, QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QApplication, QGridLayout, QHBoxLayout, QLabel,
+    QMainWindow, QPushButton, QSizePolicy, QSpacerItem,
+    QStackedWidget, QVBoxLayout, QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -87,6 +87,9 @@ class Ui_MainWindow(object):
         self.label = QLabel(self.page_1)
         self.label.setObjectName(u"label")
         self.label.setGeometry(QRect(80, 60, 47, 13))
+        self.btn_import_mesh = QPushButton(self.page_1)
+        self.btn_import_mesh.setObjectName(u"btn_import_mesh")
+        self.btn_import_mesh.setGeometry(QRect(60, 90, 75, 23))
         self.viewswidget.addWidget(self.page_1)
         self.page_2 = QWidget()
         self.page_2.setObjectName(u"page_2")
@@ -116,11 +119,6 @@ class Ui_MainWindow(object):
         self.gridLayout = QGridLayout(self.displayviewwidget)
         self.gridLayout.setObjectName(u"gridLayout")
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
-        self.graphicsView = QGraphicsView(self.displayviewwidget)
-        self.graphicsView.setObjectName(u"graphicsView")
-
-        self.gridLayout.addWidget(self.graphicsView, 0, 0, 1, 1)
-
 
         self.horizontalLayout_2.addWidget(self.displayviewwidget)
 
@@ -131,7 +129,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.viewswidget.setCurrentIndex(2)
+        self.viewswidget.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -143,6 +141,7 @@ class Ui_MainWindow(object):
         self.btn_dicom_view.setText(QCoreApplication.translate("MainWindow", u"import dicom", None))
         self.btn_export_view.setText(QCoreApplication.translate("MainWindow", u"export mesh", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"mesh", None))
+        self.btn_import_mesh.setText(QCoreApplication.translate("MainWindow", u"import mesh", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"dicom", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"export", None))
     # retranslateUi

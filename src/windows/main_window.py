@@ -5,6 +5,7 @@ from classes import info
 from classes.mesh.imports import read_3d_file
 from classes.app import get_app
 from windows.ui import main_window_ui
+from windows.views.viewport import OrbitCameraViewer3d
 
 from PySide6.QtWidgets import QMainWindow, QFileDialog
 
@@ -17,7 +18,7 @@ class MainWindow(QMainWindow):
             return
         
         shape = read_3d_file(filename=filename)
-        self.app.signals
+        self.app.signals.loadMesh.emit(shape)
 
 
     def __init__(self, *args):
@@ -44,7 +45,15 @@ class MainWindow(QMainWindow):
 
         app.signals.viewChanged.connect(self.ui.viewswidget.setCurrentIndex)
 
+        self.ui.btn_import_mesh.pressed.connect(self.actionImportMesh)
+
         # TODO initialize models
+
+        # initialize canvas
+        self.canvas = OrbitCameraViewer3d()
+        self.ui.displayviewwidget.layout().addWidget(self.canvas)
+        self.canvas.InitDriver()
+        self.display = self.canvas._display
 
         # show this window with resizing to ensure canvas is displayed properly
         self.showWithCanvas()  # shows and then resizes the window to properly display canvas
