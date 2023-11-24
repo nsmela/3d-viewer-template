@@ -3,9 +3,11 @@ from PySide6.QtWidgets import QApplication
 
 from classes.signals import AppSignals
 
+
 def get_app():
     """ Returns the current QApplication instance """
     return QApplication.instance()
+
 
 class RadiotherapyApp(QApplication):
 

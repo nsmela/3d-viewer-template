@@ -5,6 +5,7 @@ from PySide6 import QtCore, QtGui, QtWidgets
 
 from classes.app import get_app
 
+
 class qtBaseViewer(QtWidgets.QWidget):
     """The base Qt Widget for an OCC viewer"""
 
@@ -44,6 +45,15 @@ class OrbitCameraViewer3d(qtBaseViewer):
         self._display.DisplayShape(shape, update=True)
         self._display.FitAll()
 
+    def actionUpdateModel(self, shape: TopoDS_Shape):
+        pass
+
+    def actionRemoveModel(self, shape: TopoDS_Shape):
+        pass
+
+    def actionClearModels(self, shape: TopoDS_Shape):
+        pass
+
     def __init__(self, *kargs):
         qtBaseViewer.__init__(self, *kargs)
 
@@ -74,7 +84,7 @@ class OrbitCameraViewer3d(qtBaseViewer):
     @qApp.setter
     def qApp(self, value):
         self._qApp = value
-        
+
     def InitDriver(self):
         self._display.Create(window_handle=int(self.winId()), parent=self)
         # background gradient

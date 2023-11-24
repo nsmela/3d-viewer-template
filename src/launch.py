@@ -1,9 +1,9 @@
-
-
 from PySide6.QtWidgets import QApplication
-from classes import info
 
 import sys
+
+from classes import info
+
 
 app = None
 

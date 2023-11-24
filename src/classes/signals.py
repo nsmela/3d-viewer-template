@@ -1,4 +1,5 @@
 from OCC.Core.TopoDS import TopoDS_Shape
+
 from PySide6.QtCore import QObject, Signal
 
 class AppSignals(QObject):
