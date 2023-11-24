@@ -26,10 +26,9 @@ class Ui_MainWindow(object):
         MainWindow.resize(882, 687)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
-        self.verticalLayout = QVBoxLayout(self.centralwidget)
-        self.verticalLayout.setSpacing(0)
-        self.verticalLayout.setObjectName(u"verticalLayout")
-        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.gridLayout_2 = QGridLayout(self.centralwidget)
+        self.gridLayout_2.setObjectName(u"gridLayout_2")
+        self.gridLayout_2.setContentsMargins(0, 0, 0, 0)
         self.top_menu_bar = QWidget(self.centralwidget)
         self.top_menu_bar.setObjectName(u"top_menu_bar")
         self.top_menu_bar.setMinimumSize(QSize(0, 64))
@@ -66,7 +65,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout.addItem(self.horizontalSpacer_2)
 
 
-        self.verticalLayout.addWidget(self.top_menu_bar)
+        self.gridLayout_2.addWidget(self.top_menu_bar, 0, 0, 1, 1)
 
         self.bodywidget = QWidget(self.centralwidget)
         self.bodywidget.setObjectName(u"bodywidget")
@@ -84,29 +83,48 @@ class Ui_MainWindow(object):
         self.viewswidget.setObjectName(u"viewswidget")
         self.page_1 = QWidget()
         self.page_1.setObjectName(u"page_1")
+        self.verticalLayout = QVBoxLayout(self.page_1)
+        self.verticalLayout.setObjectName(u"verticalLayout")
         self.label = QLabel(self.page_1)
         self.label.setObjectName(u"label")
-        self.label.setGeometry(QRect(80, 60, 47, 13))
+        font = QFont()
+        font.setPointSize(32)
+        self.label.setFont(font)
+
+        self.verticalLayout.addWidget(self.label)
+
         self.btn_import_mesh = QPushButton(self.page_1)
         self.btn_import_mesh.setObjectName(u"btn_import_mesh")
-        self.btn_import_mesh.setGeometry(QRect(60, 90, 75, 23))
+
+        self.verticalLayout.addWidget(self.btn_import_mesh)
+
         self.viewswidget.addWidget(self.page_1)
         self.page_2 = QWidget()
         self.page_2.setObjectName(u"page_2")
+        self.verticalLayout_3 = QVBoxLayout(self.page_2)
+        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.label_2 = QLabel(self.page_2)
         self.label_2.setObjectName(u"label_2")
-        self.label_2.setGeometry(QRect(80, 40, 47, 13))
+        self.label_2.setFont(font)
+
+        self.verticalLayout_3.addWidget(self.label_2)
+
         self.viewswidget.addWidget(self.page_2)
         self.page_3 = QWidget()
         self.page_3.setObjectName(u"page_3")
+        self.verticalLayout_4 = QVBoxLayout(self.page_3)
+        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
         self.label_3 = QLabel(self.page_3)
         self.label_3.setObjectName(u"label_3")
-        self.label_3.setGeometry(QRect(50, 90, 47, 13))
+        self.label_3.setFont(font)
+
+        self.verticalLayout_4.addWidget(self.label_3)
+
         self.viewswidget.addWidget(self.page_3)
 
-        self.verticalLayout_2.addWidget(self.viewswidget)
+        self.verticalLayout_2.addWidget(self.viewswidget, 0, Qt.AlignTop)
 
-        self.verticalSpacer = QSpacerItem(20, 296, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.verticalSpacer = QSpacerItem(20, 491, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.verticalLayout_2.addItem(self.verticalSpacer)
 
@@ -123,7 +141,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.addWidget(self.displayviewwidget)
 
 
-        self.verticalLayout.addWidget(self.bodywidget)
+        self.gridLayout_2.addWidget(self.bodywidget, 1, 0, 1, 1)
 
         MainWindow.setCentralWidget(self.centralwidget)
 
