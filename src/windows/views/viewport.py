@@ -66,6 +66,15 @@ class OrbitCameraViewer3d(qtBaseViewer):
         app = get_app()
         app.signals.loadMesh.connect(self.actionLoadNewModel)
 
+    @property
+    def qApp(self):
+        # reference to QApplication instance
+        return self._qApp
+
+    @qApp.setter
+    def qApp(self, value):
+        self._qApp = value
+        
     def InitDriver(self):
         self._display.Create(window_handle=int(self.winId()), parent=self)
         # background gradient

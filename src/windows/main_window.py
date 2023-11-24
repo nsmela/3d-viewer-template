@@ -1,5 +1,5 @@
-
-import os
+from PySide6.QtWidgets import QMainWindow, QFileDialog
+from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox
 
 from classes import info
 from classes.mesh.imports import read_3d_file
@@ -7,7 +7,7 @@ from classes.app import get_app
 from windows.ui import main_window_ui
 from windows.views.viewport import OrbitCameraViewer3d
 
-from PySide6.QtWidgets import QMainWindow, QFileDialog
+import os
 
 
 class MainWindow(QMainWindow):
@@ -54,6 +54,10 @@ class MainWindow(QMainWindow):
         self.ui.displayviewwidget.layout().addWidget(self.canvas)
         self.canvas.InitDriver()
         self.display = self.canvas._display
+        a_box = BRepPrimAPI_MakeBox(10.0, 20.0, 30.0).Shape()
+        self.ais_box = self.display.DisplayShape(a_box)[0]
+        self.display.display_triedron()
+        self.display.FitAll()
 
         # show this window with resizing to ensure canvas is displayed properly
         self.showWithCanvas()  # shows and then resizes the window to properly display canvas
