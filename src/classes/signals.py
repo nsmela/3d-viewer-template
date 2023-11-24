@@ -15,4 +15,4 @@ class AppSignals(QObject):
     displayUpdated = Signal()  # when the 3d viewport is updated
     exportFile = Signal(str)  # need to export the mesh
     viewChanged = Signal(int)  # set the page for the viewwidget
-    loadMesh = Signal(TopoDS_Shape)
+    loadMesh = Signal(str, TopoDS_Shape)

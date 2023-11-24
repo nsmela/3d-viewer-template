@@ -2,8 +2,11 @@ from OCC.Display import OCCViewer
 from OCC.Core.TopoDS import TopoDS_Shape
 
 from PySide6 import QtCore, QtGui, QtWidgets
+from PySide6.QtCore import Qt
+from PySide6.QtGui import QStandardItemModel, QStandardItem
 
 from classes.app import get_app
+from windows.models.displaymodel import DisplayModel
 
 
 class qtBaseViewer(QtWidgets.QWidget):
@@ -40,19 +43,16 @@ class OrbitCameraViewer3d(qtBaseViewer):
     # is a list of TopoDS_*
     sig_topods_selected = QtCore.Signal(list)
 
-    def actionLoadNewModel(self, shape: TopoDS_Shape):
+    def update_display(self, shapes: list, resize: bool):
+        # clear all the shapes
         self._display.Context.RemoveAll(True)
-        self._display.DisplayShape(shape, update=True)
-        self._display.FitAll()
+        for shape in shapes:
+            print(f"{shape[0]}")
+            self._display.DisplayShape(shape[1])
+        # set the grid model
 
-    def actionUpdateModel(self, shape: TopoDS_Shape):
-        pass
-
-    def actionRemoveModel(self, shape: TopoDS_Shape):
-        pass
-
-    def actionClearModels(self, shape: TopoDS_Shape):
-        pass
+        # resize
+        if resize: self._display.FitAll()
 
     def __init__(self, *kargs):
         qtBaseViewer.__init__(self, *kargs)
@@ -71,10 +71,6 @@ class OrbitCameraViewer3d(qtBaseViewer):
         self._qApp = get_app()
         self._current_cursor = "arrow"
         self._available_cursors = {}
-
-        #signals
-        app = get_app()
-        app.signals.loadMesh.connect(self.actionLoadNewModel)
 
     @property
     def qApp(self):

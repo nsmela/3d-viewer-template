@@ -7,6 +7,7 @@ from classes.mesh.imports import read_3d_file
 from classes.app import get_app
 from windows.ui import main_window_ui
 from windows.views.viewport import OrbitCameraViewer3d
+from windows.models.displaymodel import DisplayModel
 
 
 
@@ -18,7 +19,7 @@ class MainWindow(QMainWindow):
             return
         
         shape = read_3d_file(filename=filename)
-        get_app().signals.loadMesh.emit(shape)
+        get_app().signals.loadMesh.emit("main", shape)
 
 
     def __init__(self, *args):
@@ -48,6 +49,7 @@ class MainWindow(QMainWindow):
         self.ui.btn_import_mesh.pressed.connect(self.actionImportMesh)
 
         # TODO initialize models
+        self.displaymodel = DisplayModel()
 
         # initialize canvas
         self.canvas = OrbitCameraViewer3d()
@@ -58,7 +60,8 @@ class MainWindow(QMainWindow):
         self.display.display_triedron()
         self.display.FitAll()
 
-        app.signals.loadMesh.connect(self.canvas.actionLoadNewModel)
+        app.signals.loadMesh.connect(self.displaymodel.add_shape)
+        self.displaymodel.shapes_changed.connect(self.canvas.update_display)
 
         # show this window with resizing to ensure canvas is displayed properly
         self.showWithCanvas()  # shows and then resizes the window to properly display canvas
