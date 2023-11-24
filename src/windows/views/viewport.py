@@ -2,11 +2,8 @@ from OCC.Display import OCCViewer
 from OCC.Core.TopoDS import TopoDS_Shape
 
 from PySide6 import QtCore, QtGui, QtWidgets
-from PySide6.QtCore import Qt
-from PySide6.QtGui import QStandardItemModel, QStandardItem
 
 from classes.app import get_app
-from windows.models.displaymodel import DisplayModel
 
 
 class qtBaseViewer(QtWidgets.QWidget):
@@ -49,6 +46,7 @@ class OrbitCameraViewer3d(qtBaseViewer):
         for shape in shapes:
             print(f"{shape[0]}")
             self._display.DisplayShape(shape[1])
+
         # set the grid model
 
         # resize

@@ -1,5 +1,3 @@
-from OCC.Core.TopoDS import TopoDS_Shape
-
 from PySide6.QtCore import QObject, Signal
 
 class AppSignals(QObject):
@@ -15,4 +13,3 @@ class AppSignals(QObject):
     displayUpdated = Signal()  # when the 3d viewport is updated
     exportFile = Signal(str)  # need to export the mesh
     viewChanged = Signal(int)  # set the page for the viewwidget
-    loadMesh = Signal(str, TopoDS_Shape)
