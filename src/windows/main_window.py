@@ -1,5 +1,4 @@
 from PySide6.QtWidgets import QMainWindow, QFileDialog
-from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox
 
 from classes import info
 from classes.mesh.imports import read_3d_file
@@ -18,7 +17,7 @@ class MainWindow(QMainWindow):
             return
         
         shape = read_3d_file(filename=filename)
-        self.app.signals.loadMesh.emit(shape)
+        get_app().signals.loadMesh.emit(shape)
 
 
     def __init__(self, *args):
@@ -54,10 +53,11 @@ class MainWindow(QMainWindow):
         self.ui.displayviewwidget.layout().addWidget(self.canvas)
         self.canvas.InitDriver()
         self.display = self.canvas._display
-        a_box = BRepPrimAPI_MakeBox(10.0, 20.0, 30.0).Shape()
-        self.ais_box = self.display.DisplayShape(a_box)[0]
+
         self.display.display_triedron()
         self.display.FitAll()
+
+        app.signals.loadMesh.connect(self.canvas.actionLoadNewModel)
 
         # show this window with resizing to ensure canvas is displayed properly
         self.showWithCanvas()  # shows and then resizes the window to properly display canvas
