@@ -2,6 +2,7 @@
 
 
 Structural organization inspired from:
+https://www.pythonguis.com/faq/structuring-a-large-pyqt-application/
 https://github.com/OpenShot/openshot-qt
 
 https://realpython.com/qt-designer-python/#connecting-signals-and-slots
