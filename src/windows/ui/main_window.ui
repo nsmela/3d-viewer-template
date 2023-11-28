@@ -227,6 +227,20 @@
            </widget>
           </item>
           <item>
+           <widget class="QPushButton" name="btn_test_1">
+            <property name="text">
+             <string>create sphere</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_test_2">
+            <property name="text">
+             <string>del sphere</string>
+            </property>
+           </widget>
+          </item>
+          <item>
            <spacer name="verticalSpacer">
             <property name="orientation">
              <enum>Qt::Vertical</enum>
@@ -234,7 +248,7 @@
             <property name="sizeHint" stdset="0">
              <size>
               <width>20</width>
-              <height>491</height>
+              <height>433</height>
              </size>
             </property>
            </spacer>

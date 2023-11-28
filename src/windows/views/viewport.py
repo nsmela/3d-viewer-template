@@ -1,10 +1,11 @@
 from OCC.Display import OCCViewer
 from OCC.Core.TopoDS import TopoDS_Shape
+from OCC.Core.Quantity import Quantity_Color, Quantity_TOC_RGB
 
 from PySide6 import QtCore, QtGui, QtWidgets
 
 from classes.app import get_app
-
+from windows.models.shapemodel import ShapeModel
 
 class qtBaseViewer(QtWidgets.QWidget):
     """The base Qt Widget for an OCC viewer"""
@@ -40,12 +41,14 @@ class OrbitCameraViewer3d(qtBaseViewer):
     # is a list of TopoDS_*
     sig_topods_selected = QtCore.Signal(list)
 
-    def update_display(self, shapes: list, resize: bool):
+    def update_display(self, shapes: list, resize: bool = True):
         # clear all the shapes
         self._display.Context.RemoveAll(True)
         for shape in shapes:
-            print(f"{shape[0]}")
-            self._display.DisplayShape(shape[1])
+            print(f"Shape: {shape.label}, rgb: {shape.rgb}")
+            colour = Quantity_Color(
+                shape.rgb[0], shape.rgb[1], shape.rgb[2], Quantity_TOC_RGB)
+            self._display.DisplayShape(shape.shape, color=colour, update=True)
 
         # set the grid model
 

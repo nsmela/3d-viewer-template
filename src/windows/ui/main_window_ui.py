@@ -124,7 +124,17 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_2.addWidget(self.viewswidget, 0, Qt.AlignTop)
 
-        self.verticalSpacer = QSpacerItem(20, 491, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.btn_test_1 = QPushButton(self.left_menu_bar)
+        self.btn_test_1.setObjectName(u"btn_test_1")
+
+        self.verticalLayout_2.addWidget(self.btn_test_1)
+
+        self.btn_test_2 = QPushButton(self.left_menu_bar)
+        self.btn_test_2.setObjectName(u"btn_test_2")
+
+        self.verticalLayout_2.addWidget(self.btn_test_2)
+
+        self.verticalSpacer = QSpacerItem(20, 433, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.verticalLayout_2.addItem(self.verticalSpacer)
 
@@ -162,5 +172,7 @@ class Ui_MainWindow(object):
         self.btn_import_mesh.setText(QCoreApplication.translate("MainWindow", u"import mesh", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"dicom", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"export", None))
+        self.btn_test_1.setText(QCoreApplication.translate("MainWindow", u"create sphere", None))
+        self.btn_test_2.setText(QCoreApplication.translate("MainWindow", u"del sphere", None))
     # retranslateUi
 
