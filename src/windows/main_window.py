@@ -77,16 +77,20 @@ class MainWindow(QMainWindow):
         # TODO initialize models
         self.displaymodel = DisplayModel()
 
+        # using Qt3D Viewer
+        from .views.viewer import Q3dViewer
+        self.dsiplay = Q3dViewer()
+
         # initialize canvas
-        self.canvas = OrbitCameraViewer3d()
-        self.ui.displayviewwidget.layout().addWidget(self.canvas)
-        self.canvas.InitDriver()
-        self.display = self.canvas._display
+        #self.canvas = OrbitCameraViewer3d()
+        #self.ui.displayviewwidget.layout().addWidget(self.canvas)
+        #self.canvas.InitDriver()
+        #self.display = self.canvas._display
 
-        self.display.display_triedron()
-        self.display.FitAll()
+        #self.display.display_triedron()
+        #self.display.FitAll()
 
-        self.displaymodel.shapes_changed.connect(self.canvas.update_display)
+        #self.displaymodel.shapes_changed.connect(self.canvas.update_display)
 
         # show this window with resizing to ensure canvas is displayed properly
         self.showWithCanvas()  # shows and then resizes the window to properly display canvas

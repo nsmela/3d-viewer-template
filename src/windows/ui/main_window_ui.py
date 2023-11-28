@@ -15,6 +15,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
+from PySide6.QtOpenGLWidgets import QOpenGLWidget
 from PySide6.QtWidgets import (QApplication, QGridLayout, QHBoxLayout, QLabel,
     QMainWindow, QPushButton, QSizePolicy, QSpacerItem,
     QStackedWidget, QVBoxLayout, QWidget)
@@ -147,6 +148,11 @@ class Ui_MainWindow(object):
         self.gridLayout = QGridLayout(self.displayviewwidget)
         self.gridLayout.setObjectName(u"gridLayout")
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
+        self.openGLWidget = QOpenGLWidget(self.displayviewwidget)
+        self.openGLWidget.setObjectName(u"openGLWidget")
+
+        self.gridLayout.addWidget(self.openGLWidget, 0, 0, 1, 1)
+
 
         self.horizontalLayout_2.addWidget(self.displayviewwidget)
 
