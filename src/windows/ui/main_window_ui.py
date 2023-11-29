@@ -91,7 +91,7 @@ class Ui_MainWindow(object):
         font.setPointSize(32)
         self.label.setFont(font)
 
-        self.verticalLayout.addWidget(self.label)
+        self.verticalLayout.addWidget(self.label, 0, Qt.AlignTop)
 
         self.btn_import_mesh = QPushButton(self.page_1)
         self.btn_import_mesh.setObjectName(u"btn_import_mesh")
@@ -117,7 +117,7 @@ class Ui_MainWindow(object):
         self.label_2.setObjectName(u"label_2")
         self.label_2.setFont(font)
 
-        self.verticalLayout_3.addWidget(self.label_2)
+        self.verticalLayout_3.addWidget(self.label_2, 0, Qt.AlignTop)
 
         self.viewswidget.addWidget(self.page_2)
         self.page_3 = QWidget()
@@ -128,7 +128,7 @@ class Ui_MainWindow(object):
         self.label_3.setObjectName(u"label_3")
         self.label_3.setFont(font)
 
-        self.verticalLayout_4.addWidget(self.label_3)
+        self.verticalLayout_4.addWidget(self.label_3, 0, Qt.AlignTop)
 
         self.viewswidget.addWidget(self.page_3)
 

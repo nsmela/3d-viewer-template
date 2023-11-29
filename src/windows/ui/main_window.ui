@@ -171,7 +171,7 @@
             </property>
             <widget class="QWidget" name="page_1">
              <layout class="QVBoxLayout" name="verticalLayout">
-              <item>
+              <item alignment="Qt::AlignTop">
                <widget class="QLabel" name="label">
                 <property name="font">
                  <font>
@@ -208,7 +208,7 @@
             </widget>
             <widget class="QWidget" name="page_2">
              <layout class="QVBoxLayout" name="verticalLayout_3">
-              <item>
+              <item alignment="Qt::AlignTop">
                <widget class="QLabel" name="label_2">
                 <property name="font">
                  <font>
@@ -224,7 +224,7 @@
             </widget>
             <widget class="QWidget" name="page_3">
              <layout class="QVBoxLayout" name="verticalLayout_4">
-              <item>
+              <item alignment="Qt::AlignTop">
                <widget class="QLabel" name="label_3">
                 <property name="font">
                  <font>
