@@ -12,10 +12,13 @@ class MainWindow(QMainWindow):
 
     def actionImportMesh(self):
         filename = QFileDialog.getOpenFileName(self, "Open model", "", "Model files (*.step *.stp *.stl);; All files (*.*))", "")[0]
+        
         if not filename:  # no file selected?
             log.info("no valid filename selected for importing")
             return
         
+        log.info(f"file {filename} has been selected")
+
         shape = read_3d_file(filename=filename)
         shape_model = ShapeModel("main", shape)
         self.displaymodel.add_shape(shape_model)
@@ -57,11 +60,10 @@ class MainWindow(QMainWindow):
         self.ui.setupUi(self)
 
         # TODO set keyboard shortcuts
-        
         # TODO set theme
         # TODO set window variables (name, title, position in monitor) 
-
         # TODO connect signals to events
+        
         # view signals send the new page's index
         self.ui.btn_import_view.pressed.connect(lambda: app.signals.viewChanged.emit(0))
         self.ui.btn_dicom_view.pressed.connect(lambda: app.signals.viewChanged.emit(1))
