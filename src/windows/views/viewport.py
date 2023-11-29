@@ -5,6 +5,7 @@ from OCC.Core.Quantity import Quantity_Color, Quantity_TOC_RGB
 from PySide6 import QtCore, QtGui, QtWidgets
 
 from classes.app import get_app
+from classes.logger import log
 from windows.models.shapemodel import ShapeModel
 
 class qtBaseViewer(QtWidgets.QWidget):
@@ -45,7 +46,7 @@ class OrbitCameraViewer3d(qtBaseViewer):
         # clear all the shapes
         self._display.Context.RemoveAll(True)
         for shape in shapes:
-            print(f"Shape: {shape.label}, rgb: {shape.rgb}")
+            log.info(f"Shape: {shape.label}, rgb: {shape.rgb}")
             colour = Quantity_Color(
                 shape.rgb[0], shape.rgb[1], shape.rgb[2], Quantity_TOC_RGB)
             self._display.DisplayShape(shape.shape, color=colour, update=True)
@@ -116,10 +117,8 @@ class OrbitCameraViewer3d(qtBaseViewer):
             painter.drawRect(rect)
 
     def wheelEvent(self, event):
-        print("orbital viewport: wheel event!")
         delta = event.angleDelta().y()
         zoom_factor = 2.0 if delta > 0 else 0.5
-        print(f"orbital viewer: updating zoom with value of {zoom_factor}")
         self._display.ZoomFactor(zoom_factor)
 
     @property

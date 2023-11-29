@@ -21,7 +21,6 @@ def main():
     argv = [sys.argv[0]]
 
     try:
-        print(f"Starting {info.APP_NAME} v{info.APP_VERSION} at {info.DIR_PATH} with home {info.HOME_PATH}")
         app = RadiotherapyApp(argv)
     except Exception:
         # TODO show errors from within app

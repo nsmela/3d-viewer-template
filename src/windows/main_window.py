@@ -1,8 +1,6 @@
 from PySide6.QtWidgets import QMainWindow, QFileDialog
 
-import os
-
-from classes import info
+from classes.logger import log
 from classes.mesh.imports import read_3d_file
 from classes.app import get_app
 from windows.ui import main_window_ui
@@ -15,6 +13,7 @@ class MainWindow(QMainWindow):
     def actionImportMesh(self):
         filename = QFileDialog.getOpenFileName(self, "Open model", "", "Model files (*.step *.stp *.stl);; All files (*.*))", "")[0]
         if not filename:  # no file selected?
+            log.info("no valid filename selected for importing")
             return
         
         shape = read_3d_file(filename=filename)
@@ -49,6 +48,8 @@ class MainWindow(QMainWindow):
 
         app = get_app()
         self.initialized = False
+
+        log.info("Starting main window initialization")
 
         # TODO load user settings
 
@@ -91,6 +92,8 @@ class MainWindow(QMainWindow):
         # show this window with resizing to ensure canvas is displayed properly
         self.showWithCanvas()  # shows and then resizes the window to properly display canvas
         self.initialized = True
+
+        log.info("main window initialization complete")
 
     def showWithCanvas(self):
         # for the canvas widget to properly fit, we need to shrink the window slightly and then 

@@ -3,7 +3,6 @@ from PySide6.QtWidgets import QApplication
 
 from classes.signals import AppSignals
 
-
 def get_app():
     """ Returns the current QApplication instance """
     return QApplication.instance()
@@ -18,15 +17,17 @@ class RadiotherapyApp(QApplication):
         self.signals = AppSignals()
 
         try:
-            from classes import info
-            # TODO initialize logger
+            from classes import info, logger
+            logger.log.info(f"Starting {info.APP_NAME}")
 
         except ImportError:
             # TODO log
             # stop launching
             raise
-        
-        # TODO log start
+
+        except Exception as error_message:
+            print(f"unable to start logging. {error_message}")
+            raise
 
         self.path = info.DIR_PATH
 
@@ -36,12 +37,16 @@ class RadiotherapyApp(QApplication):
         :return: bool: True if the GUI has no errors, False if initialization fails
         """
 
-        from windows.main_window import MainWindow
-        # TODO log creating window
-        self.window = MainWindow()
+        try:
+            from windows.main_window import MainWindow
+            self.window = MainWindow()
 
-        # process args like autoloading a file or project
+            # TODO process args like autoloading a file or project
 
-
-        return True
+            return True
+        
+        except Exception as error_message:
+            from classes import logger
+            logger.log.critical(f"Main window start failed: {error_message}")
+            return False
 
