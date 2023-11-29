@@ -15,6 +15,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
+from PySide6.QtOpenGLWidgets import QOpenGLWidget
 from PySide6.QtWidgets import (QApplication, QGridLayout, QHBoxLayout, QLabel,
     QMainWindow, QPushButton, QSizePolicy, QSpacerItem,
     QStackedWidget, QVBoxLayout, QWidget)
@@ -98,6 +99,16 @@ class Ui_MainWindow(object):
 
         self.verticalLayout.addWidget(self.btn_import_mesh)
 
+        self.btn_test_1 = QPushButton(self.page_1)
+        self.btn_test_1.setObjectName(u"btn_test_1")
+
+        self.verticalLayout.addWidget(self.btn_test_1)
+
+        self.btn_test_2 = QPushButton(self.page_1)
+        self.btn_test_2.setObjectName(u"btn_test_2")
+
+        self.verticalLayout.addWidget(self.btn_test_2)
+
         self.viewswidget.addWidget(self.page_1)
         self.page_2 = QWidget()
         self.page_2.setObjectName(u"page_2")
@@ -124,16 +135,6 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_2.addWidget(self.viewswidget, 0, Qt.AlignTop)
 
-        self.btn_test_1 = QPushButton(self.left_menu_bar)
-        self.btn_test_1.setObjectName(u"btn_test_1")
-
-        self.verticalLayout_2.addWidget(self.btn_test_1)
-
-        self.btn_test_2 = QPushButton(self.left_menu_bar)
-        self.btn_test_2.setObjectName(u"btn_test_2")
-
-        self.verticalLayout_2.addWidget(self.btn_test_2)
-
         self.verticalSpacer = QSpacerItem(20, 433, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.verticalLayout_2.addItem(self.verticalSpacer)
@@ -147,6 +148,11 @@ class Ui_MainWindow(object):
         self.gridLayout = QGridLayout(self.displayviewwidget)
         self.gridLayout.setObjectName(u"gridLayout")
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
+        self.openGLWidget = QOpenGLWidget(self.displayviewwidget)
+        self.openGLWidget.setObjectName(u"openGLWidget")
+
+        self.gridLayout.addWidget(self.openGLWidget, 0, 0, 1, 1)
+
 
         self.horizontalLayout_2.addWidget(self.displayviewwidget)
 
@@ -170,9 +176,9 @@ class Ui_MainWindow(object):
         self.btn_export_view.setText(QCoreApplication.translate("MainWindow", u"export mesh", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"mesh", None))
         self.btn_import_mesh.setText(QCoreApplication.translate("MainWindow", u"import mesh", None))
-        self.label_2.setText(QCoreApplication.translate("MainWindow", u"dicom", None))
-        self.label_3.setText(QCoreApplication.translate("MainWindow", u"export", None))
         self.btn_test_1.setText(QCoreApplication.translate("MainWindow", u"create sphere", None))
         self.btn_test_2.setText(QCoreApplication.translate("MainWindow", u"del sphere", None))
+        self.label_2.setText(QCoreApplication.translate("MainWindow", u"dicom", None))
+        self.label_3.setText(QCoreApplication.translate("MainWindow", u"export", None))
     # retranslateUi
 

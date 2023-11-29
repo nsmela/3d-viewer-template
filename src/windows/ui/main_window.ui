@@ -190,6 +190,20 @@
                 </property>
                </widget>
               </item>
+              <item>
+               <widget class="QPushButton" name="btn_test_1">
+                <property name="text">
+                 <string>create sphere</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btn_test_2">
+                <property name="text">
+                 <string>del sphere</string>
+                </property>
+               </widget>
+              </item>
              </layout>
             </widget>
             <widget class="QWidget" name="page_2">
@@ -224,20 +238,6 @@
               </item>
              </layout>
             </widget>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="btn_test_1">
-            <property name="text">
-             <string>create sphere</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="btn_test_2">
-            <property name="text">
-             <string>del sphere</string>
-            </property>
            </widget>
           </item>
           <item>
@@ -277,6 +277,9 @@
           <property name="bottomMargin">
            <number>0</number>
           </property>
+          <item row="0" column="0">
+           <widget class="QOpenGLWidget" name="openGLWidget"/>
+          </item>
          </layout>
         </widget>
        </item>
