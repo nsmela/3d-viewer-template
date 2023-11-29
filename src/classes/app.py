@@ -18,17 +18,19 @@ class RadiotherapyApp(QApplication):
         self.signals = AppSignals()
 
         try:
-            from classes import info
-            # TODO initialize logger
+            from classes.info import APP_NAME, DIR_PATH
+            from classes.logger import log
+            log.info(f"Starting {APP_NAME}")
 
-        except ImportError:
-            # TODO log
-            # stop launching
+        except ImportError as error_message:
+            print(f"logging module unable to import! \n{error_message}")
             raise
-        
-        # TODO log start
 
-        self.path = info.DIR_PATH
+        except Exception as error_message:
+            print(f"Unable to start logging. \n{error_message}")
+            raise
+
+        self.path = DIR_PATH
 
     def gui(self):
         """
@@ -36,12 +38,16 @@ class RadiotherapyApp(QApplication):
         :return: bool: True if the GUI has no errors, False if initialization fails
         """
 
-        from windows.main_window import MainWindow
-        # TODO log creating window
-        self.window = MainWindow()
+        try:
+            from windows.main_window import MainWindow
+            self.window = MainWindow()
 
-        # process args like autoloading a file or project
+            # TODO process args like autoloading a file or project
 
-
-        return True
+            return True
+        
+        except Exception as error_message:
+            from classes.logger import log
+            log.critical(f"Main window start failed: {error_message}")
+            return False
 

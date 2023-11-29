@@ -1,8 +1,6 @@
 from PySide6.QtWidgets import QMainWindow, QFileDialog
 
-import os
-
-from classes import info
+from classes.logger import log
 from classes.mesh.imports import read_3d_file
 from classes.app import get_app
 from windows.ui import main_window_ui
@@ -14,9 +12,13 @@ class MainWindow(QMainWindow):
 
     def actionImportMesh(self):
         filename = QFileDialog.getOpenFileName(self, "Open model", "", "Model files (*.step *.stp *.stl);; All files (*.*))", "")[0]
+        
         if not filename:  # no file selected?
+            log.info("no valid filename selected for importing")
             return
         
+        log.info(f"file {filename} has been selected")
+
         shape = read_3d_file(filename=filename)
         shape_model = ShapeModel("main", shape)
         self.displaymodel.add_shape(shape_model)
@@ -50,17 +52,18 @@ class MainWindow(QMainWindow):
         app = get_app()
         self.initialized = False
 
+        log.info("Starting main window initialization")
+
         # TODO load user settings
 
         self.ui = main_window_ui.Ui_MainWindow()
         self.ui.setupUi(self)
 
         # TODO set keyboard shortcuts
-        
         # TODO set theme
         # TODO set window variables (name, title, position in monitor) 
-
         # TODO connect signals to events
+        
         # view signals send the new page's index
         self.ui.btn_import_view.pressed.connect(lambda: app.signals.viewChanged.emit(0))
         self.ui.btn_dicom_view.pressed.connect(lambda: app.signals.viewChanged.emit(1))
@@ -91,6 +94,8 @@ class MainWindow(QMainWindow):
         # show this window with resizing to ensure canvas is displayed properly
         self.showWithCanvas()  # shows and then resizes the window to properly display canvas
         self.initialized = True
+
+        log.info("main window initialization complete")
 
     def showWithCanvas(self):
         # for the canvas widget to properly fit, we need to shrink the window slightly and then 
