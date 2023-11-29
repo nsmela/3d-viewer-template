@@ -28,12 +28,15 @@ class MainWindow(QMainWindow):
         from OCC.Core.gp import gp_Pnt
         from random import randint
 
+        amount = 10
+
+        log.info(f"Adding {amount} spheres to the viewer for testing")
         label = "test_sphere"
         shapes = []
-        for i in range(10):
-            point = gp_Pnt(randint(0, 30), randint(0, 30), 0)
-            shape = BRepPrimAPI_MakeSphere(point, randint(0, 10)).Shape()
-            shape_model = ShapeModel(f"{label}_{i}", shape,(0.1, randint(0, 10) / 10, 0.9))
+        for i in range(amount):
+            point = gp_Pnt(randint(-30, 30), randint(-30, 30), 0)
+            shape = BRepPrimAPI_MakeSphere(point, randint(5, 10)).Shape()
+            shape_model = ShapeModel(label=f"{label}_{i}", shape=shape, rgb=(0.1, randint(0, 10) / 10, 0.9))
             shapes.append(shape_model)
         self.displaymodel.add_shapes(shapes)
 
@@ -63,7 +66,7 @@ class MainWindow(QMainWindow):
         # TODO set theme
         # TODO set window variables (name, title, position in monitor) 
         # TODO connect signals to events
-        
+
         # view signals send the new page's index
         self.ui.btn_import_view.pressed.connect(lambda: app.signals.viewChanged.emit(0))
         self.ui.btn_dicom_view.pressed.connect(lambda: app.signals.viewChanged.emit(1))

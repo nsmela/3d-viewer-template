@@ -45,16 +45,20 @@ class OrbitCameraViewer3d(qtBaseViewer):
     def update_display(self, shapes: list, resize: bool = True):
         # clear all the shapes
         self._display.Context.RemoveAll(True)
+
+        loggedinfo = "shapes: "
         for shape in shapes:
-            log.info(f"Shape: {shape.label}, rgb: {shape.rgb}")
+            loggedinfo += f"\nShape: {shape.label}, rgb: {shape.rgb}"
             colour = Quantity_Color(
                 shape.rgb[0], shape.rgb[1], shape.rgb[2], Quantity_TOC_RGB)
-            self._display.DisplayShape(shape.shape, color=colour, update=True)
+            self._display.DisplayShape(shape.shape, color=colour, update=False)
 
+        self._display.Repaint()
         # set the grid model
 
         # resize
         if resize: self._display.FitAll()
+        log.info(loggedinfo)
 
     def __init__(self, *kargs):
         qtBaseViewer.__init__(self, *kargs)

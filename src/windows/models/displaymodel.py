@@ -32,7 +32,7 @@ class DisplayModel(QObject):
         self.update()
 
     def update(self):
-        self.shapes_changed.emit(list(self.shapes.values()), False)
+        self.shapes_changed.emit(list(self.shapes.values()), True)
 
     def __init__(self):
         super().__init__()
