@@ -4,9 +4,9 @@ from OCC.Core.Quantity import Quantity_Color, Quantity_TOC_RGB
 
 from PySide6 import QtCore, QtGui, QtWidgets
 
-from classes.app import get_app
-from classes.logger import log
-from windows.models.shapemodel import ShapeModel
+from src.classes.app import get_app
+from src.classes.logger import log
+from src.windows.models.shapemodel import ShapeModel
 
 class qtBaseViewer(QtWidgets.QWidget):
     """The base Qt Widget for an OCC viewer"""

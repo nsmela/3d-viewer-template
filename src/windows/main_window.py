@@ -1,12 +1,12 @@
 from PySide6.QtWidgets import QMainWindow, QFileDialog
 
-from classes.logger import log
-from classes.mesh.imports import read_3d_file
-from classes.app import get_app
-from windows.ui import main_window_ui
-from windows.views.viewport import OrbitCameraViewer3d
-from windows.models.displaymodel import DisplayModel
-from windows.models.shapemodel import ShapeModel
+from src.classes.logger import log
+from src.classes.mesh.imports import read_3d_file
+from src.classes.app import get_app
+from src.windows.ui import main_window_ui
+from src.windows.views.viewport import OrbitCameraViewer3d
+from src.windows.models.displaymodel import DisplayModel
+from src.windows.models.shapemodel import ShapeModel
 
 class MainWindow(QMainWindow):
 

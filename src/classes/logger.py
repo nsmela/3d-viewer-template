@@ -1,8 +1,5 @@
-import pathlib
 import logging
 import logging.handlers
-
-from classes import info
 
 # setup log formaters
 template = '%(levelname)s %(module)s: %(message)s'
