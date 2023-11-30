@@ -1,7 +1,7 @@
 import unittest
 from pathlib import Path
 
-from src.classes.mesh.imports import read_3d_file
+from src.classes.mesh.fileio import read_3d_file
 
 file_folder = Path(__file__).parent.joinpath("files")
 shapes_file = file_folder.joinpath("shapes.step")

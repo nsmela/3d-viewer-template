@@ -1,7 +1,7 @@
 from PySide6.QtWidgets import QMainWindow, QFileDialog
 
 from src.classes.logger import log
-from src.classes.mesh.imports import read_3d_file
+from src.classes.mesh.fileio import read_3d_file
 from src.classes.app import get_app
 from src.windows.ui import main_window_ui
 from src.windows.views.viewport import OrbitCameraViewer3d
