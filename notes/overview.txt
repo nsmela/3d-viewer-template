@@ -1,0 +1,29 @@
+Overview of the design of this template
+
+Design inspired by: https://github.com/OpenShot/openshot-qt
+
+Relevant files:
+
+/project
+  /notes -> files and info relevant to setting up and modifying this project
+  /src -> the scripts and modules written for this project
+    src/classes -> scripts relevent for a specific function, often used by a view's actions
+      src/classes/mesh -> scripts related to mesh processing
+      app.py -> script that holds the app and the gui, tries to run both and processes errors if found
+      info.py -> script for all commonly used information, like paths, app name, etc
+      logger.py -> configures the logging settings
+      signals.py -> signals used within the app that need to be accessed by any other script
+    src/windows -> the ui for the project
+      src/windows/models -> data models used within the gui
+        displaymodel.py -> a data model observed by the 3D view to configure and display the 3D models
+        shapemodel.py -> a simple data model for the 3D models displayed
+      src/windows/ui -> ui source files and their converted PySide6 class
+        main_window.ui -> the source file for the main window's gui produced by Qt Designer
+        main_window_ui.py -> the python script converted from the main_window.ui file for PySide6
+      src/windows/views -> scripts to implement the ui files
+        viewport.py -> the view script for the 3D model widget from pythonocc-core
+      main_window.py -> the main view that ties all the views and models together
+    launch.py -> main script to run the app  
+  /testing -> testing scripts for this project
+  requirements.txt -> list of packages needed for this project
+  run_tests.py -> main script to run all tests for this project
