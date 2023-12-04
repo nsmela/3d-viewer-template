@@ -1,7 +1,7 @@
 
 from PySide6.QtWidgets import QApplication
 
-from src.classes.signals import AppSignals
+from classes.signals import AppSignals
 
 
 def get_app():
@@ -18,8 +18,8 @@ class RadiotherapyApp(QApplication):
         self.signals = AppSignals()
 
         try:
-            from src.classes.info import APP_NAME, DIR_PATH
-            from src.classes.logger import log
+            from classes.info import APP_NAME, DIR_PATH
+            from classes.logger import log
             log.info(f"Starting {APP_NAME}")
 
         except ImportError as error_message:
@@ -39,7 +39,7 @@ class RadiotherapyApp(QApplication):
         """
 
         try:
-            from src.windows.main_window import MainWindow
+            from windows.main_window import MainWindow
             self.window = MainWindow()
 
             # TODO process args like autoloading a file or project
@@ -47,7 +47,7 @@ class RadiotherapyApp(QApplication):
             return True
         
         except Exception as error_message:
-            from src.classes.logger import log
+            from classes.logger import log
             log.critical(f"Main window start failed: {error_message}")
             return False
 
