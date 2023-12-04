@@ -1,4 +1,4 @@
-# radiotherapy-3d-template
+3D Viewer Template
 
 
 Structural organization inspired from:
