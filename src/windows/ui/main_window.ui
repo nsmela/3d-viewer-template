@@ -236,6 +236,13 @@
                 </property>
                </widget>
               </item>
+              <item>
+               <widget class="QPushButton" name="btn_export_shapes">
+                <property name="text">
+                 <string>export shape(s)</string>
+                </property>
+               </widget>
+              </item>
              </layout>
             </widget>
            </widget>

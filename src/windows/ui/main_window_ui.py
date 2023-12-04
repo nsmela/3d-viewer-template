@@ -130,6 +130,11 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_4.addWidget(self.label_3, 0, Qt.AlignTop)
 
+        self.btn_export_shapes = QPushButton(self.page_3)
+        self.btn_export_shapes.setObjectName(u"btn_export_shapes")
+
+        self.verticalLayout_4.addWidget(self.btn_export_shapes)
+
         self.viewswidget.addWidget(self.page_3)
 
         self.verticalLayout_2.addWidget(self.viewswidget, 0, Qt.AlignTop)
@@ -174,5 +179,6 @@ class Ui_MainWindow(object):
         self.btn_test_2.setText(QCoreApplication.translate("MainWindow", u"del sphere", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"dicom", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"export", None))
+        self.btn_export_shapes.setText(QCoreApplication.translate("MainWindow", u"export shape(s)", None))
     # retranslateUi
 
