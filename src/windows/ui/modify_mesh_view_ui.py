@@ -18,15 +18,15 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QApplication, QLabel, QPushButton, QSizePolicy,
     QSpacerItem, QVBoxLayout, QWidget)
 
-class Ui_Mesh_View(object):
-    def setupUi(self, Mesh_View):
-        if not Mesh_View.objectName():
-            Mesh_View.setObjectName(u"Mesh_View")
-        Mesh_View.resize(240, 400)
-        self.verticalLayout = QVBoxLayout(Mesh_View)
+class Ui_Modify_View(object):
+    def setupUi(self, Modify_View):
+        if not Modify_View.objectName():
+            Modify_View.setObjectName(u"Modify_View")
+        Modify_View.resize(240, 400)
+        self.verticalLayout = QVBoxLayout(Modify_View)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
-        self.label_title = QLabel(Mesh_View)
+        self.label_title = QLabel(Modify_View)
         self.label_title.setObjectName(u"label_title")
         font = QFont()
         font.setPointSize(32)
@@ -34,12 +34,12 @@ class Ui_Mesh_View(object):
 
         self.verticalLayout.addWidget(self.label_title)
 
-        self.btn_add_sphere = QPushButton(Mesh_View)
+        self.btn_add_sphere = QPushButton(Modify_View)
         self.btn_add_sphere.setObjectName(u"btn_add_sphere")
 
         self.verticalLayout.addWidget(self.btn_add_sphere)
 
-        self.btn_remove_sphere = QPushButton(Mesh_View)
+        self.btn_remove_sphere = QPushButton(Modify_View)
         self.btn_remove_sphere.setObjectName(u"btn_remove_sphere")
 
         self.verticalLayout.addWidget(self.btn_remove_sphere)
@@ -49,15 +49,15 @@ class Ui_Mesh_View(object):
         self.verticalLayout.addItem(self.verticalSpacer)
 
 
-        self.retranslateUi(Mesh_View)
+        self.retranslateUi(Modify_View)
 
-        QMetaObject.connectSlotsByName(Mesh_View)
+        QMetaObject.connectSlotsByName(Modify_View)
     # setupUi
 
-    def retranslateUi(self, Mesh_View):
-        Mesh_View.setWindowTitle(QCoreApplication.translate("Mesh_View", u"Form", None))
-        self.label_title.setText(QCoreApplication.translate("Mesh_View", u"modify", None))
-        self.btn_add_sphere.setText(QCoreApplication.translate("Mesh_View", u"add sphere", None))
-        self.btn_remove_sphere.setText(QCoreApplication.translate("Mesh_View", u"remove sphere", None))
+    def retranslateUi(self, Modify_View):
+        Modify_View.setWindowTitle(QCoreApplication.translate("Modify_View", u"Form", None))
+        self.label_title.setText(QCoreApplication.translate("Modify_View", u"modify", None))
+        self.btn_add_sphere.setText(QCoreApplication.translate("Modify_View", u"add sphere", None))
+        self.btn_remove_sphere.setText(QCoreApplication.translate("Modify_View", u"remove sphere", None))
     # retranslateUi
 
