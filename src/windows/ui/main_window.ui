@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QGridLayout" name="gridLayout_2">
+   <layout class="QVBoxLayout" name="verticalLayout_5">
     <property name="leftMargin">
      <number>0</number>
     </property>
@@ -27,7 +27,7 @@
     <property name="bottomMargin">
      <number>0</number>
     </property>
-    <item row="0" column="0">
+    <item>
      <widget class="QWidget" name="top_menu_bar" native="true">
       <property name="minimumSize">
        <size>
@@ -92,7 +92,7 @@
        <item>
         <widget class="QPushButton" name="btn_dicom_view">
          <property name="text">
-          <string>import dicom</string>
+          <string>modify mesh</string>
          </property>
         </widget>
        </item>
@@ -131,7 +131,7 @@
       </layout>
      </widget>
     </item>
-    <item row="1" column="0">
+    <item>
      <widget class="QWidget" name="bodywidget" native="true">
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <property name="spacing">
@@ -164,101 +164,40 @@
           </size>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_2">
-          <item alignment="Qt::AlignTop">
+          <item>
            <widget class="QStackedWidget" name="viewswidget">
             <property name="currentIndex">
              <number>0</number>
             </property>
-            <widget class="QWidget" name="page_1">
-             <layout class="QVBoxLayout" name="verticalLayout">
-              <item alignment="Qt::AlignTop">
-               <widget class="QLabel" name="label">
-                <property name="font">
-                 <font>
-                  <pointsize>32</pointsize>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>mesh</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="btn_import_mesh">
-                <property name="text">
-                 <string>import mesh</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="btn_test_1">
-                <property name="text">
-                 <string>create sphere</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="btn_test_2">
-                <property name="text">
-                 <string>del sphere</string>
-                </property>
-               </widget>
-              </item>
+            <widget class="QWidget" name="page_mesh">
+             <layout class="QVBoxLayout" name="verticalLayout_7">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
              </layout>
             </widget>
-            <widget class="QWidget" name="page_2">
-             <layout class="QVBoxLayout" name="verticalLayout_3">
-              <item alignment="Qt::AlignTop">
-               <widget class="QLabel" name="label_2">
-                <property name="font">
-                 <font>
-                  <pointsize>32</pointsize>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>dicom</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
+            <widget class="QWidget" name="page_modify">
+             <layout class="QVBoxLayout" name="verticalLayout"/>
+            </widget>
+            <widget class="QWidget" name="page_export">
+             <layout class="QVBoxLayout" name="verticalLayout_3"/>
             </widget>
             <widget class="QWidget" name="page_3">
-             <layout class="QVBoxLayout" name="verticalLayout_4">
-              <item alignment="Qt::AlignTop">
-               <widget class="QLabel" name="label_3">
-                <property name="font">
-                 <font>
-                  <pointsize>32</pointsize>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>export</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="btn_export_shapes">
-                <property name="text">
-                 <string>export shape(s)</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
+             <layout class="QVBoxLayout" name="verticalLayout_4"/>
             </widget>
            </widget>
-          </item>
-          <item>
-           <spacer name="verticalSpacer">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>20</width>
-              <height>433</height>
-             </size>
-            </property>
-           </spacer>
           </item>
          </layout>
         </widget>

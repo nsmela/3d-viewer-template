@@ -9,6 +9,7 @@ from windows.ui import main_window_ui
 from windows.views.viewport import OrbitCameraViewer3d
 from windows.models.displaymodel import DisplayModel
 from windows.models.shapemodel import ShapeModel
+from windows.views.mesh_view import Mesh_View
 
 class MainWindow(QMainWindow):
 
@@ -96,7 +97,6 @@ class MainWindow(QMainWindow):
 
         app.signals.viewChanged.connect(self.ui.viewswidget.setCurrentIndex)
 
-        self.ui.btn_import_mesh.pressed.connect(self.actionImportMesh)
         self.ui.btn_export_shapes.pressed.connect(self.actionExportMesh)
 
         # TODO test buttons
@@ -116,6 +116,9 @@ class MainWindow(QMainWindow):
         self.display.FitAll()
 
         self.displaymodel.shapes_changed.connect(self.canvas.update_display)
+
+        # TODO views
+        self.ui.page_mesh.layout().addWidget(Mesh_View())
 
         # show this window with resizing to ensure canvas is displayed properly
         self.showWithCanvas()  # shows and then resizes the window to properly display canvas
