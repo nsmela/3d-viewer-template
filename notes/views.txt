@@ -1,0 +1,8 @@
+How to Add or Modify views
+
+1) create a ui file and save it under src/windows/ui
+2) convert that file into python code. Qt Designer, uic, or other method
+3) create a python file in src/windows/ui that inherits from QWidget
+4) in that file, store a copy of the converted python code and run setupUi
+5) in that file, also set up the controls that need to be futher implemented, like buttons
+6) in src/windows/main_window.py, ensure the view is added (like: self.ui.page_mesh.layout().addWidget(Mesh_View()))
