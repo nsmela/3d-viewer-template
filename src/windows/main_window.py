@@ -3,35 +3,15 @@ from PySide6.QtWidgets import QMainWindow, QFileDialog
 from OCC.Core.BRep import BRep_Builder
 
 from classes.logger import log
-from classes.mesh.fileio import read_3d_file, write_3d_file
 from classes.app import get_app
 from windows.ui import main_window_ui
 from windows.views.viewport import OrbitCameraViewer3d
 from windows.models.displaymodel import DisplayModel
 from windows.views.mesh_view import Mesh_View
 from windows.views.modify_view import Modify_View
+from windows.views.export_view import Export_View
 
 class MainWindow(QMainWindow):
-
-    def actionExportMesh(self):
-        from OCC.Core.TopoDS import TopoDS_Compound
-        filename = QFileDialog.getSaveFileName(
-            self, "Save model", "", "BRep file (*.step *.stp);; STL File (*.stl);; All files (*.*))", "")
-
-        if not filename:  # no file selected?
-            log.info("no valid filename selected for importing")
-            return
-        
-        log.info(f"file {filename} has been selected for exporting")
-
-        compound = TopoDS_Compound()
-        shape_tool = BRep_Builder()
-        shape_tool.MakeCompound(compound)
-        shapes = {sm: sm.shape for sm in self.displaymodel.shapes.values()}
-        for shape in shapes.values():
-            shape_tool.Add(compound, shape)
-
-        write_3d_file(filename[0], compound)
 
     def __init__(self, *args):
         super().__init__(*args)
@@ -77,6 +57,7 @@ class MainWindow(QMainWindow):
         # TODO views
         self.ui.page_mesh.layout().addWidget(Mesh_View())
         self.ui.page_modify.layout().addWidget(Modify_View())
+        self.ui.page_export.layout().addWidget(Export_View())
 
         # show this window with resizing to ensure canvas is displayed properly
         self.showWithCanvas()  # shows and then resizes the window to properly display canvas
