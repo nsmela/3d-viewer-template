@@ -15,9 +15,9 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QGridLayout, QHBoxLayout, QLabel,
-    QMainWindow, QPushButton, QSizePolicy, QSpacerItem,
-    QStackedWidget, QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QApplication, QGridLayout, QHBoxLayout, QMainWindow,
+    QPushButton, QSizePolicy, QSpacerItem, QStackedWidget,
+    QVBoxLayout, QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -26,9 +26,9 @@ class Ui_MainWindow(object):
         MainWindow.resize(882, 687)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
-        self.gridLayout_2 = QGridLayout(self.centralwidget)
-        self.gridLayout_2.setObjectName(u"gridLayout_2")
-        self.gridLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_5 = QVBoxLayout(self.centralwidget)
+        self.verticalLayout_5.setObjectName(u"verticalLayout_5")
+        self.verticalLayout_5.setContentsMargins(0, 0, 0, 0)
         self.top_menu_bar = QWidget(self.centralwidget)
         self.top_menu_bar.setObjectName(u"top_menu_bar")
         self.top_menu_bar.setMinimumSize(QSize(0, 64))
@@ -65,7 +65,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout.addItem(self.horizontalSpacer_2)
 
 
-        self.gridLayout_2.addWidget(self.top_menu_bar, 0, 0, 1, 1)
+        self.verticalLayout_5.addWidget(self.top_menu_bar)
 
         self.bodywidget = QWidget(self.centralwidget)
         self.bodywidget.setObjectName(u"bodywidget")
@@ -81,67 +81,30 @@ class Ui_MainWindow(object):
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.viewswidget = QStackedWidget(self.left_menu_bar)
         self.viewswidget.setObjectName(u"viewswidget")
-        self.page_1 = QWidget()
-        self.page_1.setObjectName(u"page_1")
-        self.verticalLayout = QVBoxLayout(self.page_1)
+        self.page_mesh = QWidget()
+        self.page_mesh.setObjectName(u"page_mesh")
+        self.verticalLayout_7 = QVBoxLayout(self.page_mesh)
+        self.verticalLayout_7.setSpacing(0)
+        self.verticalLayout_7.setObjectName(u"verticalLayout_7")
+        self.verticalLayout_7.setContentsMargins(0, 0, 0, 0)
+        self.viewswidget.addWidget(self.page_mesh)
+        self.page_modify = QWidget()
+        self.page_modify.setObjectName(u"page_modify")
+        self.verticalLayout = QVBoxLayout(self.page_modify)
         self.verticalLayout.setObjectName(u"verticalLayout")
-        self.label = QLabel(self.page_1)
-        self.label.setObjectName(u"label")
-        font = QFont()
-        font.setPointSize(32)
-        self.label.setFont(font)
-
-        self.verticalLayout.addWidget(self.label, 0, Qt.AlignTop)
-
-        self.btn_import_mesh = QPushButton(self.page_1)
-        self.btn_import_mesh.setObjectName(u"btn_import_mesh")
-
-        self.verticalLayout.addWidget(self.btn_import_mesh)
-
-        self.btn_test_1 = QPushButton(self.page_1)
-        self.btn_test_1.setObjectName(u"btn_test_1")
-
-        self.verticalLayout.addWidget(self.btn_test_1)
-
-        self.btn_test_2 = QPushButton(self.page_1)
-        self.btn_test_2.setObjectName(u"btn_test_2")
-
-        self.verticalLayout.addWidget(self.btn_test_2)
-
-        self.viewswidget.addWidget(self.page_1)
-        self.page_2 = QWidget()
-        self.page_2.setObjectName(u"page_2")
-        self.verticalLayout_3 = QVBoxLayout(self.page_2)
+        self.viewswidget.addWidget(self.page_modify)
+        self.page_export = QWidget()
+        self.page_export.setObjectName(u"page_export")
+        self.verticalLayout_3 = QVBoxLayout(self.page_export)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
-        self.label_2 = QLabel(self.page_2)
-        self.label_2.setObjectName(u"label_2")
-        self.label_2.setFont(font)
-
-        self.verticalLayout_3.addWidget(self.label_2, 0, Qt.AlignTop)
-
-        self.viewswidget.addWidget(self.page_2)
+        self.viewswidget.addWidget(self.page_export)
         self.page_3 = QWidget()
         self.page_3.setObjectName(u"page_3")
         self.verticalLayout_4 = QVBoxLayout(self.page_3)
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
-        self.label_3 = QLabel(self.page_3)
-        self.label_3.setObjectName(u"label_3")
-        self.label_3.setFont(font)
-
-        self.verticalLayout_4.addWidget(self.label_3, 0, Qt.AlignTop)
-
-        self.btn_export_shapes = QPushButton(self.page_3)
-        self.btn_export_shapes.setObjectName(u"btn_export_shapes")
-
-        self.verticalLayout_4.addWidget(self.btn_export_shapes)
-
         self.viewswidget.addWidget(self.page_3)
 
-        self.verticalLayout_2.addWidget(self.viewswidget, 0, Qt.AlignTop)
-
-        self.verticalSpacer = QSpacerItem(20, 433, QSizePolicy.Minimum, QSizePolicy.Expanding)
-
-        self.verticalLayout_2.addItem(self.verticalSpacer)
+        self.verticalLayout_2.addWidget(self.viewswidget)
 
 
         self.horizontalLayout_2.addWidget(self.left_menu_bar)
@@ -156,7 +119,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.addWidget(self.displayviewwidget)
 
 
-        self.gridLayout_2.addWidget(self.bodywidget, 1, 0, 1, 1)
+        self.verticalLayout_5.addWidget(self.bodywidget)
 
         MainWindow.setCentralWidget(self.centralwidget)
 
@@ -171,14 +134,7 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
         self.btn_import_view.setText(QCoreApplication.translate("MainWindow", u"import mesh", None))
-        self.btn_dicom_view.setText(QCoreApplication.translate("MainWindow", u"import dicom", None))
+        self.btn_dicom_view.setText(QCoreApplication.translate("MainWindow", u"modify mesh", None))
         self.btn_export_view.setText(QCoreApplication.translate("MainWindow", u"export mesh", None))
-        self.label.setText(QCoreApplication.translate("MainWindow", u"mesh", None))
-        self.btn_import_mesh.setText(QCoreApplication.translate("MainWindow", u"import mesh", None))
-        self.btn_test_1.setText(QCoreApplication.translate("MainWindow", u"create sphere", None))
-        self.btn_test_2.setText(QCoreApplication.translate("MainWindow", u"del sphere", None))
-        self.label_2.setText(QCoreApplication.translate("MainWindow", u"dicom", None))
-        self.label_3.setText(QCoreApplication.translate("MainWindow", u"export", None))
-        self.btn_export_shapes.setText(QCoreApplication.translate("MainWindow", u"export shape(s)", None))
     # retranslateUi
 

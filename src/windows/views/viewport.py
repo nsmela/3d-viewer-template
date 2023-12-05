@@ -17,7 +17,7 @@ class qtBaseViewer(QtWidgets.QWidget):
 
         # enable Mouse Tracking
         self.setMouseTracking(True)
-
+ 
         # Strong focus
         self.setFocusPolicy(QtCore.Qt.FocusPolicy.WheelFocus)
 
