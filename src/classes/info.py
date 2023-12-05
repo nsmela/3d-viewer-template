@@ -2,7 +2,7 @@
 
 from pathlib import Path 
 
-APP_NAME = "RadiotherapyApp"
+APP_NAME = "3D Viewer App"
 APP_VERSION = "proof-of-concept"
 
 # Application Paths
